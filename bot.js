@@ -33,7 +33,7 @@ const procenv = process.env,
 // const db = new Enmap({ name: "welcomed" });
 
 // PRODUCTION:
-const Enmap = require("enmap")
+const Enmap = require("enmap");
 const db = new Enmap({ name: "welcomed" });
 
 function logger(string = "logger logging") {
@@ -58,10 +58,13 @@ client.on("ready", () => {
 client.on("message", (message) => {
   if (
     message.channel.id.toString() == procenv.CHANNELID &&
-    (!db.has(message.author.id) ||
-      !message.member.roles.cache.find((r) =>
-        r.name.toLowerCase().includes("admin")
-      ))
+    !db.has(message.author.id) &&
+    !message.member.roles.cache.find((r) =>
+      r.name.toLowerCase().includes("staff")
+    ) &&
+    !message.member.roles.cache.find((r) =>
+      r.name.toLowerCase().includes("admin")
+    )
   ) {
     let authid = message.author.id,
       welcome = [
