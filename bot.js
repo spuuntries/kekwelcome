@@ -25,6 +25,17 @@ const procenv = process.env,
   gura = procenv.WEBURL.split("/webhooks/").pop(),
   froot = procenv.OTHERWEBURL.split("/webhooks/").pop();
 
+// DB import snippet, due to a bit of a weird type declaration in Enmap,
+// if developing, uncomment the one below, if in production, uncomment the one below it.
+
+// DEV:
+// const Enmap = require("enmap").default;
+// const db = new Enmap({ name: "welcomed" });
+
+// PRODUCTION:
+const Enmap = require("enmap")
+const db = new Enmap({ name: "welcomed" });
+
 function logger(string = "logger logging") {
   console.log(`${new Date()}: ${string}`);
 }
@@ -45,7 +56,13 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-  if (message.channel.id.toString() == procenv.CHANNELID) {
+  if (
+    message.channel.id.toString() == procenv.CHANNELID &&
+    (!db.has(message.author.id) ||
+      !message.member.roles.cache.find((r) =>
+        r.name.toLowerCase().includes("admin")
+      ))
+  ) {
     let authid = message.author.id,
       welcome = [
         `Yeblo <@${authid}>! Welcome!`,
@@ -82,5 +99,6 @@ client.on("message", (message) => {
             logger(`failed to send ping to role, reason:\n"${e}"`);
           });
       });
+    db.set(message.author.id, true);
   }
 });
