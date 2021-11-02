@@ -1,6 +1,5 @@
 TOKEN=tokenhere
 CHANNELID=wheredisid
-WEBID=webhukid
-WEBTOKEN=webhuktoken
-OTHERWEBID=webhukid
-OTHERWEBTOKEN=webhuktoken
+WEBURL=webhukid
+OTHERWEBURL=webhuktoken
+ROLEID=roleid
