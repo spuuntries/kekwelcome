@@ -68,7 +68,7 @@ client.on("messageCreate", (message) => {
   ) {
     let authid = message.author.id,
       welmotes = procenv.WELMOTES.split("|"),
-      welcome = procenv.WELCOMES.split("|").map(a=>a.replace("<ping>", `<@&${authid}>`));
+      welcome = procenv.WELCOMES.split("|").map(a=>a.replace("<ping>", `<@${authid}>`));
     client.fetchWebhook(gura.split("/")[0], gura.split("/")[1]).then((web) => {
       web
         .send({
