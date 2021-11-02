@@ -1,0 +1,14 @@
+{
+  "name": "kekwelcome",
+  "version": "1.0.0",
+  "description": "Kek's welcoming module for AU.",
+  "main": "bot.js",
+  "repository": "https://github.com/spuuntries/kekwelcome",
+  "author": "kek/spuun",
+  "license": "AGPL-3.0-only",
+  "private": true,
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0"
+  }
+}
