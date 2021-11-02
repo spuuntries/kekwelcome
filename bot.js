@@ -22,8 +22,7 @@ const procenv = process.env,
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_WEBHOOKS"],
   }),
   pkg = require("./package.json"),
-  gura = procenv.WEBURL.split("/webhooks/").pop(),
-  froot = procenv.OTHERWEBURL.split("/webhooks/").pop();
+  gura = procenv.WEBURL.split("/webhooks/").pop();
 
 // DB import snippet, due to a bit of a weird type declaration in Enmap,
 // if developing, uncomment the one below, if in production, uncomment the one below it.
@@ -55,10 +54,11 @@ client.on("ready", () => {
   logger(`${client.user.tag} using ${pkg.name} v${pkg.version} ready!`);
 });
 
-client.on("message", (message) => {
+client.on("messageCreate", (message) => {
   if (
-    message.channel.id.toString() == procenv.CHANNELID &&
+    message.channel.id == procenv.CHANNELID &&
     !db.has(message.author.id) &&
+    !message.author.bot &&
     !message.member.roles.cache.find((r) =>
       r.name.toLowerCase().includes("staff")
     ) &&
@@ -73,35 +73,24 @@ client.on("message", (message) => {
         `Welcome to AU, <@${authid}>!`,
         `Hey <@${authid}>, welcome!`,
         `Yello there <@${authid}>`,
+        `Hi hi! Welcome! <@${authid}>`,
       ];
     client.fetchWebhook(gura.split("/")[0], gura.split("/")[1]).then((web) => {
       web
-        .send({ content: welcome[Math.floor(Math.random() * 6)] })
+        .send({
+          content:
+            welcome[Math.floor(Math.random() * (welcome.length + 1))] +
+            `\n<@&${procenv.ROLEID}>`,
+        })
         .then((m) => {
           if (m) {
             logger(`sent welcome message for ${message.author.tag}`);
           }
         })
         .catch((e) => {
-          logger(`failed to send ping to role, reason:\n"${e}"`);
+          logger(`failed to send welcome message, reason:\n"${e}"`);
         });
     });
-    client
-      .fetchWebhook(froot.split("/")[0], froot.split("/")[1])
-      .then((web) => {
-        web
-          .send({
-            content: `<@&${procenv.ROLEID}> ples emoclew ${message.author.tag}`,
-          })
-          .then((m) => {
-            if (m) {
-              logger(`sent ping to role`);
-            }
-          })
-          .catch((e) => {
-            logger(`failed to send ping to role, reason:\n"${e}"`);
-          });
-      });
     db.set(message.author.id, true);
   }
 });
