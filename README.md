@@ -7,6 +7,7 @@
 
 ## Dependencies:
 As we're running `d.js` v13 for this, it *is* ***required*** for you to install `node.js` v16 to run this module as is.  
+
 However, you *can* remove all v13 changes and change the `package.json` to run this on v12.
 
 
@@ -21,6 +22,7 @@ Simple enough, lmao.
 
 ## Usage:
 `mv` or rename `.env copy` to `.env` and change the variables accordingly.   
-Brief explanation of the configurable message:  
-The welmotes can be more than two emotes so long as they're all split by a `|`.  
-The same thing goes for the welcome messages, with the difference being the addition of `<ping>` placeholder.
+
+### Brief explanation of the configurable message:  
+The `welmotes` can be more than two emotes so long as they're all split by a `|`.  
+The same thing goes for the `welcomes` messages, with the difference being the addition of `<ping>` placeholder.
