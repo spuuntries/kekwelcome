@@ -82,7 +82,7 @@ client.on("messageCreate", (message) => {
           content: `${
             welcome[Math.floor(Math.random() * welcome.length)]
           } ${welmotes[Math.floor(Math.random() * welmotes.length)]}
-            \n<@&${procenv.ROLEID}>`,
+            <@&${procenv.ROLEID}>`,
         })
         .then((m) => {
           if (m) {
