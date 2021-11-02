@@ -68,14 +68,7 @@ client.on("messageCreate", (message) => {
   ) {
     let authid = message.author.id,
       welmotes = procenv.WELMOTES.split("|"),
-      welcome = [
-        `Yeblo <@${authid}>! Welcome!`,
-        `!<@${authid}> emocleW`,
-        `Welcome to AU, <@${authid}>!`,
-        `Hey <@${authid}>, welcome!`,
-        `Yello there <@${authid}>`,
-        `Hi hi! Welcome! <@${authid}>`,
-      ];
+      welcome = procenv.WELCOMES.split("|").map(a=>a.replace("<ping>", `<@&${authid}>`));
     client.fetchWebhook(gura.split("/")[0], gura.split("/")[1]).then((web) => {
       web
         .send({

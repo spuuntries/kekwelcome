@@ -20,4 +20,7 @@ Simple enough, lmao.
 
 
 ## Usage:
-`mv` or rename `.env copy` to `.env` and change the variables accordingly.
+`mv` or rename `.env copy` to `.env` and change the variables accordingly.   
+Brief explanation of the configurable message:  
+The welmotes can be more than two emotes so long as they're all split by a `|`.  
+The same thing goes for the welcome messages, with the difference being the addition of `<ping>` placeholder.
