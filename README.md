@@ -1,5 +1,9 @@
 # ✨ Kek's welcome Shiz ✨
+> Copyright (C) 2021 kekboi, Art Union org.
+> License Notice:
+> 
 > Any code within this repository and any derivatives thereof are to be licensed with AGPLv3 under kekboi, Art Union org. 
+> 
 > see LICENSE.md for details.
 
 ## Dependencies
