@@ -67,6 +67,7 @@ client.on("messageCreate", (message) => {
     )
   ) {
     let authid = message.author.id,
+      welmotes = procenv.WELMOTES.split("|"),
       welcome = [
         `Yeblo <@${authid}>! Welcome!`,
         `!<@${authid}> emocleW`,
@@ -78,9 +79,10 @@ client.on("messageCreate", (message) => {
     client.fetchWebhook(gura.split("/")[0], gura.split("/")[1]).then((web) => {
       web
         .send({
-          content:
-            welcome[Math.floor(Math.random() * (welcome.length + 1))] +
-            `\n<@&${procenv.ROLEID}>`,
+          content: `${
+            welcome[Math.floor(Math.random() * (welcome.length + 1))]
+          } ${welmotes[Math.floor(Math.random() * (welmotes.length + 1))]}
+            \n<@&${procenv.ROLEID}>`,
         })
         .then((m) => {
           if (m) {
