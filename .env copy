@@ -1,5 +1,5 @@
 TOKEN=tokenhere
-CHANNELID=wheredisid
-WEBURL=welcomewebhukrurl
-ROLEID=roleid
+CHANNELID=introchannelid
+WEBURL=welcomewebhookrurl
+ROLEID=welcomeroleid
 WELMOTES=<a:AU_wavy:780258726858850304>|<:AU_kiwiheart:851064742478217216>
