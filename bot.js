@@ -80,8 +80,8 @@ client.on("messageCreate", (message) => {
       web
         .send({
           content: `${
-            welcome[Math.floor(Math.random() * (welcome.length + 1))]
-          } ${welmotes[Math.floor(Math.random() * (welmotes.length + 1))]}
+            welcome[Math.floor(Math.random() * welcome.length)]
+          } ${welmotes[Math.floor(Math.random() * welmotes.length)]}
             \n<@&${procenv.ROLEID}>`,
         })
         .then((m) => {
