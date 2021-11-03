@@ -1,8 +1,8 @@
 # ✨ Kek's welcome Shiz ✨  
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge&logo=prettier)](https://github.com/prettier/prettier)  
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge&logo=prettier)](https://github.com/prettier/prettier)
 [![version: v1.0.69](https://img.shields.io/github/package-json/v/spuuntries/kekwelcome?color=green&logo=semver&logoColor=green&style=for-the-badge)](https://github.com/spuuntries/kekwelcome)  
-[![last commit](https://img.shields.io/github/last-commit/spuuntries/kekwelcome?color=yellow&style=flat-square)](https://github.com/spuuntries/kekwelcome)  
+[![last commit](https://img.shields.io/github/last-commit/spuuntries/kekwelcome?color=yellow&style=flat-square)](https://github.com/spuuntries/kekwelcome)
 [![license: agpl-3.0](https://img.shields.io/github/license/spuuntries/kekwelcome?color=red&logo=gpl&style=flat-square)](https://github.com/spuuntries/kekwelcome)  
 
 > Copyright (C) 2021 kekboi, Art Union org.  
