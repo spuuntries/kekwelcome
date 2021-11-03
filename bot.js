@@ -52,6 +52,21 @@ login();
 
 client.on("ready", () => {
   logger(`${client.user.tag} using ${pkg.name} v${pkg.version} ready!`);
+  logger(`fetching guilds...`)
+  client.guilds.fetch().then((ina) => {
+    if (ina.size > 5) {
+      logger(
+        `fetched ${ina.size} guilds!\n[${ina
+          .first(5)
+          .map((g) => g.name)
+          .join(", ")} ...]`
+      );
+    } else {
+      logger(
+        `fetched ${ina.size} guilds!\n[${ina.map((g) => g.name).join(", ")}]`
+      );
+    }
+  });
 });
 
 client.on("messageCreate", (message) => {
@@ -68,13 +83,15 @@ client.on("messageCreate", (message) => {
   ) {
     let authid = message.author.id,
       welmotes = procenv.WELMOTES.split("|"),
-      welcome = procenv.WELCOMES.split("|").map(a=>a.replace("<ping>", `<@${authid}>`));
+      welcome = procenv.WELCOMES.split("|").map((a) =>
+        a.replace("<ping>", `<@${authid}>`)
+      );
     client.fetchWebhook(gura.split("/")[0], gura.split("/")[1]).then((web) => {
       web
         .send({
-          content: `${
-            welcome[Math.floor(Math.random() * welcome.length)]
-          } ${welmotes[Math.floor(Math.random() * welmotes.length)]}\n<@&${procenv.ROLEID}>`,
+          content: `${welcome[Math.floor(Math.random() * welcome.length)]} ${
+            welmotes[Math.floor(Math.random() * welmotes.length)]
+          }\n<@&${procenv.ROLEID}>`,
         })
         .then((m) => {
           if (m) {
